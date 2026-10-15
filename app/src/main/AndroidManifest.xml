@@ -11,11 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Placemarks">
-
         <activity
             android:name=".AddEditActivity"
             android:exported="false" />
-
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -26,6 +24,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <activity
+            android:name=".MarkListActivity"
+            android:exported="false" />
+
+
+
+
+
+        <activity
+            android:name=".Activity_add_edit"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>
