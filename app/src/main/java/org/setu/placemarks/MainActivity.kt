@@ -8,10 +8,13 @@ import androidx.core.view.WindowInsetsCompat
 import android.widget.Button
 import android.content.Intent
 import kotlin.jvm.java
-
+import timber.log.Timber
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (Timber.forest().isEmpty()) {
+            Timber.plant(Timber.DebugTree())
+        }
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -35,6 +38,15 @@ class MainActivity : AppCompatActivity() {
             startActivity(
                 Intent(this, AddEditActivity::class.java)
             )
+        }
+        viewMarksButton.setOnClickListener {
+            Timber.d("Opening mark list")
+            startActivity(Intent(this, MarkListActivity::class.java))
+        }
+
+        addMarkButton.setOnClickListener {
+            Timber.d("Opening add mark screen")
+            startActivity(Intent(this, AddEditActivity::class.java))
         }
 
     }

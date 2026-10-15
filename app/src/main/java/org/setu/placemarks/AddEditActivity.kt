@@ -6,7 +6,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-
+import timber.log.Timber
 class AddEditActivity : AppCompatActivity() {
 
     private lateinit var titleInput: EditText
@@ -112,8 +112,8 @@ class AddEditActivity : AppCompatActivity() {
             return
         }
 
-        if (editingId == null) {
-
+        if (editingId == null|| editingId == -1L) {
+            Timber.d("Creating new mark")
             val mark = PlacedMark(
                 title = title,
                 desc = description,
@@ -130,6 +130,7 @@ class AddEditActivity : AppCompatActivity() {
             ).show()
 
         } else {
+            Timber.d("Updating mark id=$editingId")
 
             val mark = PlacedMark(
                 id = editingId!!,
